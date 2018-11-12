@@ -12,7 +12,7 @@ sourceFolderName = args.source
 
 outputFile = open('output.csv', 'w', newline='')
 outputWrite = csv.writer(outputFile)
-outputWrite.writerow(['Name','Energy', 'War Powers', 'Legalization', 'Military Presence', 'Emissions', 'National Health Insurance', 'Executive Authority'])
+outputWrite.writerow(['Name','Energy', 'War Powers', 'Legalization', 'Military Presence', 'Emissions', 'National Health Insurance', 'Executive Authority', 'Total Aff', 'Total Neg'])
 
 energy = datetime.datetime(2012,9,1)
 warPowers = datetime.datetime(2013,9,1)
@@ -36,38 +36,90 @@ for judgeRecord in os.listdir('.'):
     recordReader = csv.reader(csvFileObj)
     recordEntry = judgeRecord[:-4]
     recordlist = list(recordReader)
-    energyCount = 0
-    warCount = 0
-    legalizationCount = 0
-    milWithdrawCount = 0
-    emissionsCount = 0
-    insuranceCount = 0
-    authorityCount = 0
+    affCount = 0
+    negCount = 0
+    energyAffCount = 0
+    energyNegCount = 0
+    warAffCount = 0
+    warNegCount = 0
+    legalizationAffCount = 0
+    legalizationNegCount = 0
+    milWithdrawAffCount = 0
+    milWithdrawNegCount = 0
+    emissionsAffCount = 0
+    emissionsNegCount = 0
+    insuranceAffCount = 0
+    insuranceNegCount = 0
+    authorityAffCount = 0
+    authorityNegCount = 0
     for row in recordlist:
       checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
       if checkTime < warPowers:
-        energyCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          energyAffCount += 1
+        elif row[6].startswith('NEG'):
+          energyNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > warPowers) and (checkTime < legalization):
-        warCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          warAffCount += 1
+        elif row[6].startswith('NEG'):
+          warNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > legalization) and (checkTime < milWithdrawl):
-        legalizationCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          legalizationAffCount += 1
+        elif row[6].startswith('NEG'):
+          legalizationNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > milWithdrawl) and (checkTime < emissions):
-        milWithdrawCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          milWithdrawAffCount += 1
+        elif row[6].startswith('NEG'):
+          milWithdrawNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > emissions) and (checkTime < insurance):
-        emissionsCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          emissionsAffCount += 1
+        elif row[6].startswith('NEG'):
+          emissionsNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > insurance) and (checkTime < execAuthority):
-        insuranceCount += 1
+        if row[6].startswith('AFF'):
+          affCount += 1
+          insuranceAffCount += 1
+        elif row[6].startswith('NEG'):
+          insuranceNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       elif (checkTime > execAuthority):
-        authorityCount += 1
+        if row[6].startswith('AFF'):
+          authorityAffCount += 1
+          energyAffCount += 1
+        elif row[6].startswith('NEG'):
+          authorityNegCount += 1
+          negCount += 1
+        else:
+          print("ERROR! " + row[1])
       else:
         print('ERROR!   ' + row[1])
-      '''if row[6].startswith('AFF'):
-        affCount += 1
-      elif row[6].startswith('NEG'):
-        negCount += 1
-      else:
-        continue
-    judgeVote = negCount + affCount'''
-    outputWrite.writerow([recordEntry, energyCount, warCount, legalizationCount, milWithdrawCount, emissionsCount, insuranceCount, authorityCount])
+
+    outputWrite.writerow([recordEntry, energyAffCount, energyNegCount, warAffCount, warNegCount, legalizationCount, milWithdrawCount, emissionsCount, insuranceCount, authorityCount, affCount, negCount])
 
 outputFile.close()
