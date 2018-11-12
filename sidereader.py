@@ -43,6 +43,23 @@ for judgeRecord in os.listdir('.'):
     insuranceCount = 0
     authorityCount = 0
     for row in recordlist:
+      checkTime = datetime.strptime(row[1], "%m/%d/%y")
+      if checkTime < warPowers:
+        energyCount += 1
+      elif (checkTime > warPowers) and (checkTime < legalization):
+        warCount += 1
+      elif (checkTime > legalization) and (checkTime < milWithdrawl):
+        legalizationCount += 1
+      elif (checkTime > milWithdrawl) and (checkTime < emissions):
+        milWithdrawCount += 1
+      elif (checkTime > emissions) and (checkTime < insurance):
+        emissionsCount += 1
+      elif (checkTime > insurance) and (checkTime < execAuthority):
+        insuranceCount += 1
+      elif (checkTime > execAuthority):
+        authorityCount += 1
+      else:
+        print('ERROR!   ' + row[1])
       '''if row[6].startswith('AFF'):
         affCount += 1
       elif row[6].startswith('NEG'):
@@ -50,6 +67,6 @@ for judgeRecord in os.listdir('.'):
       else:
         continue
     judgeVote = negCount + affCount'''
-    outputWrite.writerow([recordEntry, judgeVote, affCount, negCount])
+    outputWrite.writerow([recordEntry, energyCount, warCount, legalizationCount, milWithdrawCount, emissionsCount, insuranceCount, authorityCount])
 
 outputFile.close()
