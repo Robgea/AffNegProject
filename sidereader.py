@@ -1,6 +1,7 @@
 # read the number of rounds by a judge
 
-import csv, os,  datetime #argparse
+import csv, os, datetime #argparse
+
 
 '''parser = argparse.ArgumentParser(description="Identify source folder and folder with full names")
 parser.add_argument("-s", "--source", type=str, 
@@ -13,13 +14,13 @@ outputFile = open('output.csv', 'w', newline='')
 outputWrite = csv.writer(outputFile)
 outputWrite.writerow(['Name','Energy', 'War Powers', 'Legalization', 'Military Presence', 'Emissions', 'National Health Insurance', 'Executive Authority'])
 
-energy = datetime.date(2012,9,01)
-warPowers = datetime.date(2013,9,01)
-legalization = datetime.date(2014,9,01)
-milWithdrawl = datetime.date(2015,9,01)
-emissions = datetime.date(2016,9,01)
-insurance = datetime.date(2017,9,01)
-execAuthority = datetime.date(2018,9,01)
+energy = datetime.date(2012,9,1)
+warPowers = datetime.date(2013,9,1)
+legalization = datetime.date(2014,9,1)
+milWithdrawl = datetime.date(2015,9,1)
+emissions = datetime.date(2016,9,1)
+insurance = datetime.date(2017,9,1)
+execAuthority = datetime.date(2018,9,1)
 
 
 
