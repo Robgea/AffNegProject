@@ -12,7 +12,7 @@ sourceFolderName = args.source
 
 outputFile = open('output.csv', 'w', newline='')
 outputWrite = csv.writer(outputFile)
-outputWrite.writerow(['Name','Energy', 'War Powers', 'Legalization', 'Military Presence', 'Emissions', 'National Health Insurance', 'Executive Authority', 'Total Aff', 'Total Neg'])
+outputWrite.writerow(['Name','Energy Aff', 'Energy Neg', 'War Powers Aff', 'War Powers Neg',  'Legalization Aff', 'Legalization Neg', 'Military Presence Aff', 'Military Presence Neg', 'Emissions Aff', 'Emissions Neg', 'National Health Insurance Aff', 'National Health Insurance Neg', 'Executive Authority Aff', 'Executive Authority Neg', 'Total Aff', 'Total Neg'])
 
 energy = datetime.datetime(2012,9,1)
 warPowers = datetime.datetime(2013,9,1)
@@ -120,6 +120,6 @@ for judgeRecord in os.listdir('.'):
       else:
         print('ERROR!   ' + row[1])
 
-    outputWrite.writerow([recordEntry, energyAffCount, energyNegCount, warAffCount, warNegCount, legalizationCount, milWithdrawCount, emissionsCount, insuranceCount, authorityCount, affCount, negCount])
+    outputWrite.writerow([recordEntry, energyAffCount, energyNegCount, warAffCount, warNegCount, legalizationAffCount, legalizationNegCount, milWithdrawAffCount, milWithdrawNegCount, emissionsAffCount, emissionsNegCount, insuranceAffCount, insuranceNegCount, authorityAffCount, authorityNegCount, affCount, negCount])
 
 outputFile.close()
