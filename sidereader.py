@@ -14,13 +14,13 @@ outputFile = open('output.csv', 'w', newline='')
 outputWrite = csv.writer(outputFile)
 outputWrite.writerow(['Name','Energy', 'War Powers', 'Legalization', 'Military Presence', 'Emissions', 'National Health Insurance', 'Executive Authority'])
 
-energy = datetime.date(2012,9,1)
-warPowers = datetime.date(2013,9,1)
-legalization = datetime.date(2014,9,1)
-milWithdrawl = datetime.date(2015,9,1)
-emissions = datetime.date(2016,9,1)
-insurance = datetime.date(2017,9,1)
-execAuthority = datetime.date(2018,9,1)
+energy = datetime.datetime(2012,9,1)
+warPowers = datetime.datetime(2013,9,1)
+legalization = datetime.datetime(2014,9,1)
+milWithdrawl = datetime.datetime(2015,9,1)
+emissions = datetime.datetime(2016,9,1)
+insurance = datetime.datetime(2017,9,1)
+execAuthority = datetime.datetime(2018,9,1)
 
 
 
@@ -44,7 +44,7 @@ for judgeRecord in os.listdir('.'):
     insuranceCount = 0
     authorityCount = 0
     for row in recordlist:
-      checkTime = datetime.strptime(row[1], "%m/%d/%y")
+      checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
       if checkTime < warPowers:
         energyCount += 1
       elif (checkTime > warPowers) and (checkTime < legalization):
