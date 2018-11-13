@@ -55,8 +55,6 @@ for judgeRecord in os.listdir('.'):
     print("Number of rows: {}".format(len(recordlist)) )
     numRows = 0
     for row in recordlist:
-      numRows += 1
-      print("Row number: {}".format(numRows))
       checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
       if (checkTime > energy) and (checkTime < warPowers):
         if row[6].startswith('AFF'):
