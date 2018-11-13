@@ -52,7 +52,11 @@ for judgeRecord in os.listdir('.'):
     insuranceNegCount = 0
     authorityAffCount = 0
     authorityNegCount = 0
+    print("Number of rows: {}".format(len(recordlist)) )
+    numRows = 0
     for row in recordlist:
+      numRows += 1
+      print("Row number: {}".format(numRows))
       checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
       if (checkTime > energy) and (checkTime < warPowers):
         if row[6].startswith('AFF'):
@@ -62,7 +66,7 @@ for judgeRecord in os.listdir('.'):
           energyNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in Energy! " + row[1])
       elif (checkTime > warPowers) and (checkTime < legalization):
         if row[6].startswith('AFF'):
           affCount += 1
@@ -71,7 +75,7 @@ for judgeRecord in os.listdir('.'):
           warNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in War! " + row[1])
       elif (checkTime > legalization) and (checkTime < milWithdrawl):
         if row[6].startswith('AFF'):
           affCount += 1
@@ -80,7 +84,7 @@ for judgeRecord in os.listdir('.'):
           legalizationNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in Legalization! " + row[1])
       elif (checkTime > milWithdrawl) and (checkTime < emissions):
         if row[6].startswith('AFF'):
           affCount += 1
@@ -89,7 +93,7 @@ for judgeRecord in os.listdir('.'):
           milWithdrawNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in Withdrawl! " + row[1])
       elif (checkTime > emissions) and (checkTime < insurance):
         if row[6].startswith('AFF'):
           affCount += 1
@@ -107,18 +111,19 @@ for judgeRecord in os.listdir('.'):
           insuranceNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in Insurance! " + row[1])
       elif (checkTime > execAuthority):
         if row[6].startswith('AFF'):
           authorityAffCount += 1
-          energyAffCount += 1
+          affCount += 1
         elif row[6].startswith('NEG'):
           authorityNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
+          print("ERROR in Authority! " + row[1])
       else:
-        print('ERROR!   ' + row[1])
+        print('ERROR! Everything is a disaster!' + row[1])
+
 
     outputWrite.writerow([recordEntry, energyAffCount, energyNegCount, warAffCount, warNegCount, legalizationAffCount, legalizationNegCount, milWithdrawAffCount, milWithdrawNegCount, emissionsAffCount, emissionsNegCount, insuranceAffCount, insuranceNegCount, authorityAffCount, authorityNegCount, affCount, negCount])
 
