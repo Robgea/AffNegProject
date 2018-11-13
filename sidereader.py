@@ -111,7 +111,7 @@ for judgeRecord in os.listdir('.'):
       elif (checkTime > execAuthority):
         if row[6].startswith('AFF'):
           authorityAffCount += 1
-          energyAffCount += 1
+          affCount += 1
         elif row[6].startswith('NEG'):
           authorityNegCount += 1
           negCount += 1
