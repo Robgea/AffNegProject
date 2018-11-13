@@ -36,6 +36,7 @@ for judgeRecord in os.listdir('.'):
     recordReader = csv.reader(csvFileObj)
     recordEntry = judgeRecord[:-4]
     recordlist = list(recordReader)
+    recordlist.pop(0)
     affCount = 0
     negCount = 0
     energyAffCount = 0
