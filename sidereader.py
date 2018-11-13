@@ -54,7 +54,7 @@ for judgeRecord in os.listdir('.'):
     authorityNegCount = 0
     for row in recordlist:
       checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
-      if checkTime < warPowers:
+      if (checkTime > energy) and (checkTime < warPowers):
         if row[6].startswith('AFF'):
           affCount += 1
           energyAffCount += 1
