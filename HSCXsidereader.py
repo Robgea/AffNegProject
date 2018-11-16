@@ -12,15 +12,15 @@ sourceFolderName = args.source
 
 outputFile = open('output.csv', 'w', newline='')
 outputWrite = csv.writer(outputFile)
-outputWrite.writerow(['Name','Energy Aff', 'Energy Neg', 'War Powers Aff', 'War Powers Neg',  'Legalization Aff', 'Legalization Neg', 'Military Presence Aff', 'Military Presence Neg', 'Emissions Aff', 'Emissions Neg', 'National Health Insurance Aff', 'National Health Insurance Neg', 'Executive Authority Aff', 'Executive Authority Neg', 'Total Aff', 'Total Neg'])
+outputWrite.writerow(['Name','Transport Aff', 'Transport Neg', 'Latin America Aff', 'Latin America Neg',  'Oceans Aff', 'Oceans Neg', 'Surveillance Aff', 'Surveillance Neg', 'China Aff', 'China Neg', 'Education Aff', 'Education Neg', 'Immigration Aff', 'Immigration Neg', 'Total Aff', 'Total Neg'])
 
-energy = datetime.datetime(2012,9,1)
-warPowers = datetime.datetime(2013,9,1)
-legalization = datetime.datetime(2014,9,1)
-milWithdrawl = datetime.datetime(2015,9,1)
-emissions = datetime.datetime(2016,9,1)
-insurance = datetime.datetime(2017,9,1)
-execAuthority = datetime.datetime(2018,9,1)
+transport = datetime.datetime(2012,9,1)
+latinAm = datetime.datetime(2013,9,1)
+oceans = datetime.datetime(2014,9,1)
+surveillance = datetime.datetime(2015,9,1)
+china = datetime.datetime(2016,9,1)
+education = datetime.datetime(2017,9,1)
+immigration = datetime.datetime(2018,9,1)
 
 
 
@@ -39,20 +39,20 @@ for judgeRecord in os.listdir('.'):
     #recordlist.pop(0)
     affCount = 0
     negCount = 0
-    energyAffCount = 0
-    energyNegCount = 0
-    warAffCount = 0
-    warNegCount = 0
-    legalizationAffCount = 0
-    legalizationNegCount = 0
-    milWithdrawAffCount = 0
-    milWithdrawNegCount = 0
-    emissionsAffCount = 0
-    emissionsNegCount = 0
-    insuranceAffCount = 0
-    insuranceNegCount = 0
-    authorityAffCount = 0
-    authorityNegCount = 0
+    transportAffCount = 0
+    transportNegCount = 0
+    LAAffCount = 0
+    LANegCount = 0
+    oceanAffCount = 0
+    oceanNegCount = 0
+    surveilAffCount = 0
+    surveilNegCount = 0
+    chinaAffCount = 0
+    chinaNegCount = 0
+    educAffCount = 0
+    educNegCount = 0
+    immAffCount = 0
+    immNegCount = 0
     print("Number of rows: {}".format(len(recordlist)) )
     numRows = 0
     for row in recordlist:
@@ -60,73 +60,73 @@ for judgeRecord in os.listdir('.'):
         checkTime = datetime.datetime.strptime(row[1], "%m/%d/%Y")
       except:
         continue
-      if (checkTime > energy) and (checkTime < warPowers):
+      if (checkTime > transport) and (checkTime < latinAm):
         if row[6].startswith('AFF'):
           affCount += 1
-          energyAffCount += 1
+          transportAffCount += 1
         elif row[6].startswith('NEG'):
-          energyNegCount += 1
+          transportNegCount += 1
           negCount += 1
         else:
-          print("ERROR in Energy! " + row[1])
-      elif (checkTime > warPowers) and (checkTime < legalization):
+          print("ERROR in Transport! " + row[1])
+      elif (checkTime > latinAm) and (checkTime < oceans):
         if row[6].startswith('AFF'):
           affCount += 1
-          warAffCount += 1
+          LAAffCount += 1
         elif row[6].startswith('NEG'):
-          warNegCount += 1
+          LANegCount += 1
           negCount += 1
         else:
-          print("ERROR in War! " + row[1])
-      elif (checkTime > legalization) and (checkTime < milWithdrawl):
+          print("ERROR in Latin America! " + row[1])
+      elif (checkTime > oceans) and (checkTime < surveillance):
         if row[6].startswith('AFF'):
           affCount += 1
-          legalizationAffCount += 1
+          oceanAffCount += 1
         elif row[6].startswith('NEG'):
-          legalizationNegCount += 1
+          oceanNegCount += 1
           negCount += 1
         else:
-          print("ERROR in Legalization! " + row[1])
-      elif (checkTime > milWithdrawl) and (checkTime < emissions):
+          print("ERROR in Oceans! " + row[1])
+      elif (checkTime > surveillance) and (checkTime < china):
         if row[6].startswith('AFF'):
           affCount += 1
-          milWithdrawAffCount += 1
+          surveilAffCount += 1
         elif row[6].startswith('NEG'):
-          milWithdrawNegCount += 1
+          surveilNegCount += 1
           negCount += 1
         else:
-          print("ERROR in Withdrawl! " + row[1])
-      elif (checkTime > emissions) and (checkTime < insurance):
+          print("ERROR in Surveillance! " + row[1])
+      elif (checkTime > china) and (checkTime < education):
         if row[6].startswith('AFF'):
           affCount += 1
-          emissionsAffCount += 1
+          chinaAffCount += 1
         elif row[6].startswith('NEG'):
-          emissionsNegCount += 1
+          chinaNegCount += 1
           negCount += 1
         else:
-          print("ERROR! " + row[1])
-      elif (checkTime > insurance) and (checkTime < execAuthority):
+          print("ERROR in CHINA!" + row[1])
+      elif (checkTime > education) and (checkTime < immigration):
         if row[6].startswith('AFF'):
           affCount += 1
-          insuranceAffCount += 1
+          educAffCount += 1
         elif row[6].startswith('NEG'):
-          insuranceNegCount += 1
+          educNegCount += 1
           negCount += 1
         else:
-          print("ERROR in Insurance! " + row[1])
-      elif (checkTime > execAuthority):
+          print("ERROR in Education! " + row[1])
+      elif (checkTime > immigration):
         if row[6].startswith('AFF'):
-          authorityAffCount += 1
+          immAffCount += 1
           affCount += 1
         elif row[6].startswith('NEG'):
-          authorityNegCount += 1
+          immNegCount += 1
           negCount += 1
         else:
-          print("ERROR in Authority! " + row[1])
+          print("ERROR in Immigration! " + row[1])
       else:
         print('ERROR! Everything is a disaster!' + row[1])
 
 
-    outputWrite.writerow([recordEntry, energyAffCount, energyNegCount, warAffCount, warNegCount, legalizationAffCount, legalizationNegCount, milWithdrawAffCount, milWithdrawNegCount, emissionsAffCount, emissionsNegCount, insuranceAffCount, insuranceNegCount, authorityAffCount, authorityNegCount, affCount, negCount])
+    outputWrite.writerow([recordEntry, transportAffCount, transportNegCount, LAAffCount, LANegCount, oceanAffCount, oceanNegCount, surveilAffCount, surveilNegCount, chinaAffCount, chinaNegCount, educAffCount, educNegCount, immAffCount, immNegCount, affCount, negCount])
 
 outputFile.close()
