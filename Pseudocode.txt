@@ -1,0 +1,53 @@
+judgeData = {} # this will be a dictionary with all the data
+dates = [] # this will be a list of all the dates
+judgeDataByDate = {} # this will be another dictionary
+
+# read all the data
+for file in folder:
+  judgeName = getJudgeName(file)
+  judgeData[judgeName] = readCSV(file)
+
+# make a list of all the dates
+for judge in judgeData:
+  for row in judge:
+    date = # read the date as a date
+    if dates[date] exists:
+      continue
+    else:
+      add dates.append(date)
+
+# sort the dates
+dates.sort()
+
+# add one for every date the judge has an entry
+for judge in judgeData:
+  dateTotals = {} # new dictionary
+  for date in dates:
+    dateTotals[date] = 0
+  judgeDataByDate[judge] = dateTotals
+  for row in judge:
+    tournamentDate = # get date from the row
+    judgeDataByDate[judge][tournamentDate] += 1
+
+
+
+#
+# This is a function to get the judge's name from the file name
+#
+def getJudgeName(filename):
+  judgeName = # filename minus .csv
+  return judgeName
+
+#
+# This is a function to read an individual CSV
+#
+def readCSV(filename):
+  judgeData = {} # this is a list
+  i = 0
+  for row in filename:
+    if i == 0:
+      continue
+    else:
+      # add row to judgeData
+  return judgeData
+
